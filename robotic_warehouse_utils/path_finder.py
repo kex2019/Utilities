@@ -1,4 +1,3 @@
-import math
 import heapq
 import numpy as np
 
@@ -128,7 +127,9 @@ class Astar(object):
             elif all(step == self.gym.RIGHT):
                 inst.append(self.gym.RIGHT_INSTRUCTION)
             else:
-                print("ERROR.. add logging? - get instruction")
+                print(
+                    "ERROR.. add logging? - get instruction in pathfinder - got {}".
+                    format(step))
 
             p = pn
 

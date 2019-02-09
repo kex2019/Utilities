@@ -32,7 +32,7 @@ try:
             (robots, packages), _, _, _ = gym.step([gym.PICKUP_INSTRUCTION])
 
             current_position = robots[0][0]
-            target_position = pf.available_pos_near(robots[0][1][0][1])
+            target_position = pf.available_pos_near(robots[0][1][0])
 
             instructions = pf(current_position,
                               target_position).get_instructions()

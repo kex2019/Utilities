@@ -8,7 +8,7 @@ setuptools.setup(
     description="Utils for warehouse simulator",
     url="https://github.com/kex2019/Utilities",
     packages=["robotic_warehouse_utils"],
-    # install_requires=[""],
+    install_requires=["numpy==1.14.2", "pandas==0.22.0"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
