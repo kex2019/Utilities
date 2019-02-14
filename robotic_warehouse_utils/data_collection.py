@@ -4,6 +4,10 @@ import numpy as np
 import time
 
 
+class EvaluationDone(Exception):
+    pass
+
+
 class GymCollect(object):
     def __init__(
             self,
@@ -102,6 +106,5 @@ class GymCollect(object):
                     "{} steps was taken in total but no packages was delivered after {}".
                     format(self.total_steps, self.df["total_steps"].iloc[-1]))
 
-            sys.exit(0)
-
+            raise EvaluationDone()
         return s, rew, e, i
