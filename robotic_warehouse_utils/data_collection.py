@@ -61,7 +61,7 @@ class GymCollect(object):
 
     def save(self):
         if hasattr(self, "df"):
-            self.df.to_csv(self.output)
+            self.df.to_csv(self.output, index=False)
 
     def step(self, *args, **kwargs):
         self.action_spacing.append(time.time() - self.last_action)

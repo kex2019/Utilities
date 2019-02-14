@@ -42,8 +42,7 @@ class Astar(object):
         return np.array([y, x])
 
     def __is_ok_to_walk(self, y: int, x: int):
-        return self.gym.map[y][x][0] == self.gym.FREE_ID\
-                or self.gym.map[y][x][0] == self.gym.ROBOT_ID
+        return self.gym.map[y][x][0] == self.gym.TILE_ID
 
     def available_pos_near(self, p: np.ndarray) -> np.ndarray:
         if self.__is_ok_to_walk(*p):
