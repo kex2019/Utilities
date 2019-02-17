@@ -31,8 +31,8 @@ try:
         if len(instructions) <= I and finding:
             (robots, packages), _, _, _ = gym.step([gym.PICKUP_INSTRUCTION])
 
-            current_position = robots[0][0]
-            target_position = pf.available_pos_near(robots[0][1][0])
+            current_position = robots[0].position
+            target_position = pf.available_pos_near(robots[0].packages[0].dropoff)
 
             instructions = pf(current_position,
                               target_position).get_instructions()
@@ -40,10 +40,10 @@ try:
             finding = False
         elif len(instructions) <= I:
             (robots, packages), _, _, _ = gym.step([gym.DROP_INSTRUCTION])
-            current_position = robots[0][0]
+            current_position = robots[0].position
             if packages:
                 target_position = pf.available_pos_near(
-                    random.choice(packages)[0])
+                    random.choice(packages).start)
                 instructions = pf(current_position,
                                   target_position).get_instructions()
                 I = 0
