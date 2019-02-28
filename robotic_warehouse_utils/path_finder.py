@@ -65,7 +65,7 @@ class Astar(object):
         """ Then do Astar. """
         pq = []
 
-        self.mem[self.__2d_mem(self.p1)] = 0
+        self.mem[self.__2d_mem(self.p1)] = self.__2d_mem(self.p1)
         heapq.heapify(pq)
         for d in self.D:
             p = [d[0] + p1[0], d[1] + p1[1]]
@@ -100,7 +100,7 @@ class Astar(object):
     def get_instructions(self) -> [int]:
         inst = []
         p = self.p2
-        while p != self.p1:
+        while list(p) != list(self.p1):
             pn = self.__mem_2d(self.mem[int(self.__2d_mem(p))])
             step = [p[0] - pn[0], p[1] - pn[1]]
 
@@ -120,6 +120,7 @@ class Astar(object):
                 print(
                     "ERROR.. add logging? - get instruction in pathfinder - got {}".
                     format(step))
+                break
 
             p = pn
 
