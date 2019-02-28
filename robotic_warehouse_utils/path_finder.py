@@ -131,11 +131,6 @@ class Astar(object):
 
             p = pn
 
-        print()
-        print(self.steps)
-        print(len(self.mem))
-        print(self.mem)
-        print()
         inst.reverse()
         return inst
 
