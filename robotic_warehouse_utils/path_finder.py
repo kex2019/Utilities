@@ -36,8 +36,6 @@ class Astar(object):
         self.p1 = None
         self.p2 = None
 
-        self.steps = 0
-
     def __2d_mem(self, p: []) -> int:
         return p[0] * self.width + p[1]
 
@@ -67,8 +65,6 @@ class Astar(object):
         """ Then do Astar. """
         pq = []
 
-        self.steps = 0
-
         self.mem[self.__2d_mem(self.p1)] = self.__2d_mem(self.p1)
         heapq.heapify(pq)
         for d in self.D:
@@ -79,8 +75,6 @@ class Astar(object):
                     pq,
                     # Search Score                   #Steps #Point
                     (self.norm_weight * self.norm(p, p2), 1, p))
-
-            self.steps += 1
 
         while pq:
             score, steps, pp = heapq.heappop(pq)
@@ -96,8 +90,6 @@ class Astar(object):
                     heapq.heappush(
                         pq,
                         (self.norm_weight * self.norm(p, p2), steps + 1, p))
-                self.steps += 1
-
         return None
 
     def __call__(self, p1: [], p2: []) -> "Astar":

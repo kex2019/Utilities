@@ -64,18 +64,29 @@ class GymCollect(object):
         self.latency_meta = pd.DataFrame()
         self.collision_meta = pd.DataFrame()
 
+        self.simulation_meta = pd.DataFrame({
+            "robots": [self.gym.num_robots],
+            "spawn": [self.gym.initial_spawn],
+            "capacity": [self.gym.capacity],
+            "seed": [self.gym.seed]
+        })
+
         self.total_steps = 0
         self.step_cap = steps
 
     def save(self):
         if hasattr(self, "df"):
             self.df.to_csv(
-                "{}/{}.csv".format(self.output, self.name), index=False)
+                "{}/throughput_{}.csv".format(self.output, self.name),
+                index=False)
             self.latency_meta.to_csv(
                 "{}/latency_{}.csv".format(self.output, self.name),
                 index=False)
             self.collision_meta.to_csv(
                 "{}/collision_{}.csv".format(self.output, self.name),
+                index=False)
+            self.simulation_meta.to_csv(
+                "{}/simulation_{}.csv".format(self.output, self.name),
                 index=False)
 
     def step(self, *args, **kwargs):
